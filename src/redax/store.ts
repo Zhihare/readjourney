@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
-// import { teachersReducer } from './teacherSlice';
+// import { teachersReducer } from './teach';
 import { userReducer } from './Auth/authSlice';
 
 

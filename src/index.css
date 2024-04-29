@@ -97,16 +97,13 @@ label {
 
 body {
   margin: 0 auto;
-  padding: 20px 64px;
+  padding: 20px;
   max-width: 1440px;
-  background-color: #F8F8F8;
+  background-color: var(--CL6);
+  color: var(--CL1);
   font-family: "Gilroy";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media(max-width: 700px) {
-    padding: 20px 20px;
-  }
 }
 
 button {

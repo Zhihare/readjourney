@@ -10,7 +10,7 @@ interface NavigatorProps {
 
 export const Navigator = ({ toggleMenu }: NavigatorProps) => {
 
-  const { isAuth } = useAuth();
+  const { isLoggedIn } = useAuth();
 
 
    const handleButtonClick = () => {
@@ -21,25 +21,23 @@ export const Navigator = ({ toggleMenu }: NavigatorProps) => {
 
   return (
     <NavigationNav>
-		  <NavLink onClick={handleButtonClick} className={({isActive}) =>
+		  
+      {isLoggedIn && (
+        <>
+      <NavLink onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
-			  ].join(" ")} to="/">
+			  ].join(" ")} to="/home">
         Home
       </NavLink>
       <NavLink  onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
-			  ].join(" ")}  to="/teachers">
-        Teachers
-      </NavLink>
-      {isAuth && (
-        <NavLink onClick={handleButtonClick} className={({ isActive }) =>
-          [
-            isActive ? "active" : "",
-          ].join(" ")} to="/favorites">
-          Favorites
-        </NavLink>)
+			  ].join(" ")}  to="/mylibrary">
+        My Library
+          </NavLink>
+          </>
+      )
         }
     </NavigationNav>
   );
