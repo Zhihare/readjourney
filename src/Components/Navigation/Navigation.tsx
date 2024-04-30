@@ -27,14 +27,22 @@ export const Navigator = ({ toggleMenu }: NavigatorProps) => {
       <NavLink onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
-			  ].join(" ")} to="/home">
+			  ].join(" ")} to="/">
         Home
-      </NavLink>
+          </NavLink>
+          
       <NavLink  onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
 			  ].join(" ")}  to="/mylibrary">
         My Library
+          </NavLink>
+
+        <NavLink  onClick={handleButtonClick} className={({isActive}) =>
+			  [
+				isActive ? "active" : "",
+			  ].join(" ")}  to="/mytraining">
+        My training
           </NavLink>
           </>
       )

@@ -12,25 +12,24 @@ import {
 } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
-// import { teachersReducer } from './teach';
 import { userReducer } from './Auth/authSlice';
 
 
-const teachersConfig = {
-	key: 'teachers',
-	storage,
-	whitelist: ['teachers', 'favorites'],
-};
+// const teachersConfig = {
+// 	key: 'teachers',
+// 	storage,
+// 	whitelist: ['teachers', 'favorites'],
+// };
 
 const usersConfig = {
-	key: 'user',
+	key: 'auth',
 	storage,
-	whitelist: ['email'],
+	whitelist: ['token'],
 };
 
 
 const rootReducer = combineReducers({
-	// teachers: persistReducer(teachersConfig, teachersReducer),
+	
 	user: persistReducer(usersConfig, userReducer),
 });
 

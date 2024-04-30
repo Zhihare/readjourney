@@ -1,10 +1,13 @@
 import React from 'react'
+import Layout from '../Components/Loyout/Layout'
 
 type Props = {}
 
 const HomePagr = (props: Props) => {
   return (
-    <div>HomePagr</div>
+    <div>
+      <Layout/>
+      HomePagr</div>
   )
 }
 
