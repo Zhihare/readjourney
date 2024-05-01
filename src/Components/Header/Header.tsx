@@ -5,7 +5,8 @@ import { HeaderSection, HeaderWrapper, LogoConteiner, Navigation} from './Header
 import { Navigator } from '../Navigation/Navigation'
 import { Link } from 'react-router-dom';
 
-
+import icons from '../../img/symbol-defs.svg';
+import { GiHamburgerMenu } from "react-icons/gi";
 
 
 
@@ -15,9 +16,11 @@ const Header = () => {
 	return (
         <HeaderSection>
 			
-				 <Link to="/">
+				<Link to="/">
 				<LogoConteiner>		
-				<p>LearnLingo</p>
+				 <svg className='logo'>
+        		<use href={icons + '#icon-Logo-1'}></use>
+      			</svg>
 				</LogoConteiner>
 			</Link>
 	

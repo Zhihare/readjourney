@@ -7,6 +7,13 @@ justify-content: space-between;
 align-items: center;
 flex-wrap: wrap;
 
+height: 57px;
+border-radius: 15px;
+background: var(--CL5);
+padding-left: 20px;
+
+
+
 @media(min-width: 700px){
 	max-width: 1184px;
 	margin-right: auto;
@@ -21,16 +28,18 @@ align-items: center;
 gap: 5px;
 
 
-p{
+/* p{
     font-weight: 500;
 	color: var(--text-color);
 	font-size: 20px;
   	box-sizing: border-box;
-}
+} */
 
-img{
-	width: 28px;
-	height: 28px;
+svg{
+	display: block;
+    fill: var(--CL1);
+    width: 42px;
+    height: 18px;
 }
 
 

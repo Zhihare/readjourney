@@ -108,6 +108,10 @@ input#password{
     max-width: 472px;
 }
 
+input#name{
+    padding-left: 65px;
+}
+
 
     input.error {
     border: 1px solid var(--CL9); 
@@ -167,6 +171,10 @@ div#button{
         border: 1px solid var(--CL1);
     }
 
+    button.registrButton{
+        width: 225px;
+    }
+
     button:hover{
         background: var(--CL6);
         color: var(--CL1);
@@ -220,10 +228,14 @@ div#button{
             padding-bottom: 16px;
             margin-bottom: 14px;
         }
-
+        
+        div#button.reg{
+            margin-top: 82px;
+        }
         div#button{
             margin-top: 146px;
-
+        
+        
     }
 
         a{

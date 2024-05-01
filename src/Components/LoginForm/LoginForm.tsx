@@ -9,6 +9,7 @@ import icons from '../../img/symbol-defs.svg';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { logIn } from '../../redax/Auth/authThanks';
 import { AppDispatch } from '../../redax/store';
+import { NavLink } from 'react-router-dom';
 
 type Props = {};
 
@@ -35,7 +36,7 @@ const LoginForm = (props: Props) => {
 
   const onSubmit = async (data: { email: string; password: string }) => {
   try {
-    const res = await dispatch(logIn(data)); 
+    await dispatch(logIn(data)); 
 
   } catch (error) {
     console.error('There was an error!', error);
@@ -93,7 +94,7 @@ const LoginForm = (props: Props) => {
 
         <div id="button">
           <button type="submit">Log In</button>
-          <a>Don’t have an account?</a>
+          <NavLink  to="/register">Don’t have an account?</NavLink>
         </div>
       </LoginFormForm>
     </LoginFormContainer>
