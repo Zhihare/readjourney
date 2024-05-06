@@ -32,11 +32,11 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={isLoggedIn ? <Navigate to="/" replace /> : <LoginPage />} />
-      <Route path="/register" element={isLoggedIn? <Navigate to="/" replace/>: <RegisterPage />} />
-      <Route path="/" element={<PrivateRoute component={HomePage} />} />
-      <Route path="/myLibrary" element={<PrivateRoute component={MyLibraryPage} />} />
-      <Route path="/mytraining" element={<PrivateRoute component={MyTrainingPage} />} />
+      <Route path="/login" element={isLoggedIn ? <Navigate to="/recommended" replace /> : <LoginPage />} />
+      <Route path="/register" element={isLoggedIn? <Navigate to="/recommended" replace/>: <RegisterPage />} />
+      <Route path="/recommended" element={<PrivateRoute component={HomePage} />} />
+      <Route path="/library" element={<PrivateRoute component={MyLibraryPage} />} />
+      <Route path="/reading" element={<PrivateRoute component={MyTrainingPage} />} />
     </Routes>
   );
 }

@@ -7,6 +7,15 @@ border-radius: 30px;
 background-color: var(--CL5);
 padding: 20px;
 
+@media(min-width: 1400px){
+    padding: 40px 68px;
+}
+
+@media(min-width: 768px){
+    padding: 40px 68px 214px 68px;
+    }
+`
+export const Logo= styled.div`
 svg.text{
     display: none;
 }
@@ -20,7 +29,6 @@ svg.logo{
 
 
 @media(min-width: 768px){
-    padding: 40px 68px 214px 68px;
 
     svg.text{
     display: block;
@@ -32,16 +40,19 @@ svg.logo{
     svg.logo{
         display: none;
     }
+
+  
 }
 
-@media(min-width: 1440px){
-    padding: 40px 68px;
+@media(max-width: 1400px){
+      svg.logo.header{
+        display: block;
+    }
+
+    svg.text.header{
+        display: none;
+    }
 }
-
-
-
-
-
 `
 
 export const LoginFormTitle = styled.h1`

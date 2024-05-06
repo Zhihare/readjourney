@@ -1,4 +1,4 @@
-	import styled from "styled-components";
+import styled from "styled-components";
 
 
 export const HeaderSection = styled.header`
@@ -14,8 +14,9 @@ padding-left: 20px;
 
 
 
-@media(min-width: 700px){
-	max-width: 1184px;
+@media(min-width: 768px){
+	height: 100%;
+	max-width: 1216px;
 	margin-right: auto;
     margin-left: auto;
 	color: var(----button-color-hover);
@@ -28,13 +29,6 @@ align-items: center;
 gap: 5px;
 
 
-/* p{
-    font-weight: 500;
-	color: var(--text-color);
-	font-size: 20px;
-  	box-sizing: border-box;
-} */
-
 svg{
 	display: block;
     fill: var(--CL1);
@@ -46,7 +40,7 @@ svg{
 `
 
 export const HeaderWrapper = styled.div`
-@media(max-width: 700px){
+@media(max-width: 768px){
 	display: none;
 }
 `
@@ -57,7 +51,7 @@ justify-content: center;
 align-items: center;
 
 
-@media(max-width: 700px){
+@media(max-width: 768px){
 display: none;
 }
 
@@ -87,11 +81,44 @@ p::before{
 	border-radius: 3px;
 }
 
-@media(max-width: 700px){
+@media(max-width: 768px){
 	flex-direction: column;
 	gap: 10px;
 	padding-top: 10px;
 	margin-top: 20px;
 	border-top: 1px solid var(--text-color-grey);
 }
+`
+export const RightButtonContainer = styled.div`
+display: flex;
+align-items: center;
+
+
+@media(max-width: 768px){
+    margin-right: 58px;
+}
+`
+export const RightContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+ span{
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	
+	box-sizing: border-box;
+	border: 1px solid var(--CL1h);
+	border-radius: 50%;
+	background: transparent;
+	width: 40px;
+	height: 40px;
+ }
+
+ @media(max-width: 768px){
+	p{
+		display: none;
+	}
+ }
+
 `

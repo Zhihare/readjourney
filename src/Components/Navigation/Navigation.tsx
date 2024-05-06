@@ -3,6 +3,7 @@ import { NavigationNav } from './Navigation.styled';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
+
 interface NavigatorProps {
     toggleMenu?: () => void;
 }
@@ -27,21 +28,21 @@ export const Navigator = ({ toggleMenu }: NavigatorProps) => {
       <NavLink onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
-			  ].join(" ")} to="/">
+			  ].join(" ")} to="/recommended">
         Home
           </NavLink>
           
       <NavLink  onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
-			  ].join(" ")}  to="/mylibrary">
+			  ].join(" ")}  to="/library">
         My Library
           </NavLink>
 
         <NavLink  onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
-			  ].join(" ")}  to="/mytraining">
+			  ].join(" ")}  to="/reading">
         My training
           </NavLink>
           </>

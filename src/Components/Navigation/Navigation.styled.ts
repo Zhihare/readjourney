@@ -5,25 +5,29 @@ export const NavigationNav = styled.nav`
 	display: flex;
     justify-content: space-around;
 	align-items: center;
-	gap: 20px;
+	gap: 32px;
 
 		a{
-			color: black;
-			padding: 6px;
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 18px;
+
+			color: var(--CL2);
+			padding: 6px 0;
 			border-bottom: 2px solid transparent;
 	}
 
 	a:hover,
 	a:focus{
-		color: var(--button-color);
+		color: var(--CL1);
 	}
 
 	.active{
-		color: var(--button-color);
-		border-color: var(--button-color);		
+		color: var(--CL1);
+		border-color: var(--CL7);		
 	}
 
-	@media(max-width: 700px){
+	@media(max-width: 768px){
 		flex-direction: column;
 		gap: 10px;
 		align-items: flex-start;

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 
-import { LoginFormContainer, LoginFormForm, LoginFormTitle } from './LoginForm.styled';
+import { LoginFormContainer, LoginFormForm, LoginFormTitle, Logo } from './LoginForm.styled';
 import icons from '../../img/symbol-defs.svg';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { logIn } from '../../redax/Auth/authThanks';
@@ -46,12 +46,14 @@ const LoginForm = (props: Props) => {
 
   return (
     <LoginFormContainer>
+      <Logo>
       <svg className='logo'>
         <use href={icons + '#icon-Logo-1'}></use>
       </svg>
       <svg className='text'>
         <use href={icons + '#icon-Logo'}></use>
-      </svg>
+        </svg>
+      </Logo>
       <LoginFormTitle>Expand your mind, reading <span>a book</span></LoginFormTitle>
       <LoginFormForm onSubmit={handleSubmit(onSubmit)}>
         <div>
