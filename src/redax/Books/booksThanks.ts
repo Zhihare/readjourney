@@ -3,20 +3,27 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://readjourney.b.goit.study/api/';
 
-export const fetchContacts = createAsyncThunk(
-	"contacts/fetchAll",
-	async (_, thunkAPI) => {
-		try {
-			const response = await axios.get("/contacts");
-			return response.data;
-		} catch (e:any) {
-			return thunkAPI.rejectWithValue(e.message);
-		}
-	}
+export const getRecommendBooks = createAsyncThunk(
+  'books/recommended',
+  async ({ author, page, limit, title }: { author?: string; page?: number; limit?: number; title?: string } = {}, thunkAPI) => {
+    try {
+      const response = await axios.get('/books/recommend', {
+        params: {
+          author,
+          page,
+          limit,
+          title
+        }
+	  });
+      return response.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
 );
 
-export const addContact = createAsyncThunk(
-	"contacts/addContact",
+export const getRecommendB = createAsyncThunk(
+	"books/get",
 	async (contactId:any, thunkAPI) => {
 		try {
 			const response = await axios.post("/contacts", { ...contactId });

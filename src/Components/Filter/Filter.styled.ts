@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const FilterFormCont = styled.form`
+max-width: 313px;
+width: 313px;
+
 
 h3{
 font-size: 14px;
@@ -38,6 +41,7 @@ input{
 }
 
 @media(min-width: 1400px){
+    width: 100%;
 input{
     max-width: 313px;
 }

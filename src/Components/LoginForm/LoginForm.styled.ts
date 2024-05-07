@@ -7,13 +7,15 @@ border-radius: 30px;
 background-color: var(--CL5);
 padding: 20px;
 
+@media(min-width: 768px){
+    padding: 40px 68px 214px 68px;
+    }
+    
 @media(min-width: 1400px){
     padding: 40px 68px;
 }
 
-@media(min-width: 768px){
-    padding: 40px 68px 214px 68px;
-    }
+
 `
 export const Logo= styled.div`
 svg.text{

@@ -13,13 +13,14 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 import { userReducer } from './Auth/authSlice';
+import { booksReducer } from './Books/booksSlice';
 
 
-// const teachersConfig = {
-// 	key: 'teachers',
-// 	storage,
-// 	whitelist: ['teachers', 'favorites'],
-// };
+const booksConfig = {
+	key: 'books',
+	storage,
+	whitelist: ['books'],
+};
 
 const usersConfig = {
 	key: 'auth',
@@ -29,8 +30,8 @@ const usersConfig = {
 
 
 const rootReducer = combineReducers({
-	
 	user: persistReducer(usersConfig, userReducer),
+	books: persistReducer(booksConfig, booksReducer),
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

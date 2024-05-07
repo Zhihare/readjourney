@@ -1,15 +1,14 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-// import { getFilterTeachers, getTeachersListPag } from './teachersThank';
+import { getRecommendBooks } from './booksThanks';
 
 
 
 
-export interface TeachersState {
-    teachers: any[];
-    favorites: any[];
+
+export interface BooksState {
+    books: any[];
   	isLoading: boolean;
   	error: string | null;
-  	filter: any[];
 	loadpage: number;
 	maxPage: number;
     modal: boolean;
@@ -17,49 +16,28 @@ export interface TeachersState {
 }
 
 
-const initialState: TeachersState = {
-    teachers: [],
-    favorites: [],
-
+const initialState: BooksState = {
+    books: [],
 	isLoading: false,
 	error: null,
-
-	filter: [],
-	loadpage: 2,
+	loadpage: 1,
 	maxPage: 1,
-
 	modal: false,
 	modalData: null,
 
 
 };
 
-const teachersSlice = createSlice({
-	name: 'teachers',
+const booksSlice = createSlice({
+	name: 'books',
 	initialState,
 
 	reducers: {
-		setTeachers(state, action) {
-			state.teachers = action.payload;
+		setBooks(state, action) {
+			state.books = action.payload;
 		},
 
-
-
-		addFavorites(state, action) {
-			state.favorites.push(action.payload);
-		},
-
-		removeFavorites(state, action) {
-			state.favorites = state.favorites.filter(
-				teacher => teacher.lesson_info !== action.payload
-			);
-		},
 		
-		setFavorites(state, action) {
-			state.favorites = action.payload;
-		},
-
-
 		setLoadpage(state, action) {
 			state.loadpage = action.payload;
 		},
@@ -68,10 +46,6 @@ const teachersSlice = createSlice({
 			state.maxPage = action.payload;
 		},
 
-
-		setFilter(state, action) {
-			state.filter = action.payload;
-		},
 
 		setIsLoading(state, action) {
 			state.isLoading = action.payload;
@@ -87,38 +61,41 @@ const teachersSlice = createSlice({
 		},
 	},
 
-// 	extraReducers: builder => {
-// 		builder
-// 			.addCase(getTeachersListPag.fulfilled, (state, action: any) => {
-// 				state.isLoading = false;
-// 				state.error = null;
-// 				state.teachers = state.teachers.concat(action.payload[0]);
-// 				state.maxPage = action.payload[1]; 
-// 			})
-// 			.addCase(getFilterTeachers.fulfilled, (state, action: any) => {
-// 				state.isLoading = false;
-// 				state.error = null;
-// 				state.filter = state.filter.concat(action.payload[0]);
-// 				state.maxPage = action.payload[1]; 
-// 			})
+	extraReducers: builder => {
+		builder
+			.addCase(getRecommendBooks.fulfilled, (state, action: any) => {
+				state.isLoading = false;
+				state.error = null;
+				state.books = [];
+				state.books.push(action.payload.results);
+				state.maxPage = action.payload.totalPages;
+				// state.loadpage = action.payload.page;
+			})
+			// .addCase(getFilterTeachers.fulfilled, (state, action: any) => {
+			// 	state.isLoading = false;
+			// 	state.error = null;
+			// 	state.filter = state.filter.concat(action.payload[0]);
+			// 	state.maxPage = action.payload[1];
+			// })
 
-// 			.addMatcher(
-// 				isAnyOf(
-// 					getFilterTeachers.pending,
-// 					getFilterTeachers.pending,
-// 				), state => {
-// 					state.isLoading = false;
-// 				})
-// 			.addMatcher(
-// 				isAnyOf(
-// 					getFilterTeachers.rejected,
-// 					getFilterTeachers.rejected,
-// 				), (state:any, action) => {
-// 					state.isLoading = false;
-// 					state.error = action.payload;
-// 				});
-// 	},
-});
+			.addMatcher(
+				isAnyOf(
+					getRecommendBooks.pending,
+					// getFilterTeachers.pending,
+				), state => {
+					state.isLoading = false;
+				})
+			.addMatcher(
+				isAnyOf(
+					getRecommendBooks.rejected,
+					// getFilterTeachers.rejected,
+				), (state: any, action) => {
+					state.isLoading = false;
+					state.error = action.payload;
+				});
+	},
+})
 
-// export const teachersReducer = teachersSlice.reducer;
-// export const { addFavorites, setIsLoading, removeFavorites, setFilter, setModal, setModalData, setLoadpage, setTeachers, setFavorites } = teachersSlice.actions;
+
+export const booksReducer = booksSlice.reducer;
+export const { setIsLoading, setModal, setModalData, setLoadpage, setBooks } = booksSlice.actions;

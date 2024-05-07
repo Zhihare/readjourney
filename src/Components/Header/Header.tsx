@@ -36,7 +36,7 @@ const Header: React.FC = () => {
 
   return (
     <HeaderSection>
-      <Link to="/">
+      <Link to="/recommended">
 			  <LogoConteiner>
 				<Logo>
           	<svg className="logo header">

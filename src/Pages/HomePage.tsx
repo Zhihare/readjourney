@@ -5,6 +5,10 @@ import LeftSideBar from '../Components/LeftSideBar/LeftSideBar'
 import { PageContainer } from './HomePage.styled'
 import FilterForm from '../Components/Filter/Filter'
 import StartWork from '../Components/StartWork/StartWork'
+import Quete from '../Components/Quote/Quete'
+import DashBoardTitle from './../Components/DashBoardTitle/DashBoardTitle';
+import RecomendedButton from '../Components/TitleComponent/RecomendedButton'
+import BookList from '../Components/BookList/BookList'
 
 type Props = {}
 
@@ -20,10 +24,12 @@ const HomePagr = (props: Props) => {
       <PageContainer>
         <LeftSideBar>
           <FilterForm onSearch={handleSearch} />
-          <StartWork/>
+          <StartWork />
+          <Quete/>
           </LeftSideBar>
         <Dashbord>
-          HomePagr
+          <DashBoardTitle title='Recomended' comp={<RecomendedButton />} />
+          <BookList/>
           </Dashbord>
       </PageContainer>
     </div>

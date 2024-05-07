@@ -17,14 +17,13 @@ import { PrivateRoute } from './PrivatRouter';
 
 function App() {
   const { isLoggedIn, isRefreshing } = useAuth();
-  console.log(isLoggedIn, isRefreshing);
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     startTransition(() => {
       dispatch(refreshUser())
     });
-  }, []);
+  }, [dispatch]);
 
   if (isRefreshing) {
     return <Loader />; 

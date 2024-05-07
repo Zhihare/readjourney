@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import { FilterFormCont } from './Filter.styled';
 import { ButtonLogout } from '../BurgerMenu/BurgerMenu.styled';
+import { AppDispatch } from '../../redax/store';
+import { useDispatch } from 'react-redux';
+import { getRecommendBooks } from '../../redax/Books/booksThanks';
 
 interface FilterFormProps {
   onSearch: (filter: { bookTitle: string, author: string }) => void;
 }
 
 const FilterForm: React.FC<FilterFormProps> = ({ onSearch }) => {
-  const [bookTitle, setBookTitle] = useState('');
-  const [author, setAuthor] = useState('');
+    const [bookTitle, setBookTitle] = useState('');
+    const [author, setAuthor] = useState('');
+    const dispatch: AppDispatch = useDispatch();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSearch({ bookTitle, author });
+    dispatch(getRecommendBooks({title: bookTitle, author: author }));
   };
 
   return (

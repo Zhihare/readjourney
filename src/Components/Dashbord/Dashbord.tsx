@@ -8,7 +8,6 @@ type Props = {
 const Dashbord = ({ children }: Props) => {
   return (
     <DashbordContainer className='dashBoard'>
-      Dashbord
       {children}
     </DashbordContainer>
   );

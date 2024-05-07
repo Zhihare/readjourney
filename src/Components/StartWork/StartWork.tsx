@@ -22,7 +22,7 @@ const StartWork = (props: Props) => {
                       define a goal, choose a period, start training.</p>
               </li>
           </ul>
-          <NavLink to="/library"><span>My lybrary</span>
+          <NavLink to="/library"><span className='link'>My lybrary</span>
           <FaArrowRight />
           </NavLink>
     </StartWorkContainer>

@@ -136,7 +136,9 @@ export const ButtonLogout = styled.button`
     }
 
     &&.toApply{
-      margin: 20px 0;
+      margin: 20px 0 0 0;
+      
+
     }
 
     @media(max-width: 768px){

@@ -25,10 +25,18 @@ export const StartWorkContainer = styled.div`
     margin-bottom: 26px;
    }
 
+   ul.queteList{
+    margin-bottom: 0;
+   }
+
    li{
     display: flex;
     gap: 12px;
     align-items: flex-start;
+   }
+
+   li.quete{
+    align-items: center;
    }
 
    span.number{
@@ -45,6 +53,16 @@ export const StartWorkContainer = styled.div`
     background: var(--CL1);
 
     border-radius: 50%;
+   }
+
+   span.ractangle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 40px;
+    min-height: 40px;
+    background: #000000;
    }
 
    p{
@@ -67,9 +85,13 @@ export const StartWorkContainer = styled.div`
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
-    border-bottom: 1px solid var(--CL2);
+    
 
     color: var(--CL2);
+
+    span.link{
+        border-bottom: 1px solid var(--CL2);
+    }
    }
 
    a:hover{
@@ -79,4 +101,10 @@ export const StartWorkContainer = styled.div`
    svg{
     color: var(--CL1);
    }
+
+   @media(max-width: 1400px){
+    &.queteCont{
+    display: none;
+   }
+}
    `
