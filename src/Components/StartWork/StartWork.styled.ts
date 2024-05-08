@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import HomePagr from './../../Pages/HomePage';
 
 export const StartWorkContainer = styled.div`
    padding: 20px;

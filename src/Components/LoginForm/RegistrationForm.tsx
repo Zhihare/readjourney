@@ -14,9 +14,6 @@ import { NavLink } from 'react-router-dom';
 type Props = {};
 
 const RegistrationForm = (props: Props) => {
-    const [emailFocused, setEmailFocused] = useState(false);
-    const [nameFocused, setNameFocused] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -62,8 +59,6 @@ const RegistrationForm = (props: Props) => {
             id="name"
             {...register('name')}
             className={errors.name ? 'error' : 'success'}
-            onFocus={() => setNameFocused(true)}
-            onBlur={() => setNameFocused(false)}
             autoComplete="off"
           />
           <label htmlFor="name">Name:</label>
@@ -76,8 +71,6 @@ const RegistrationForm = (props: Props) => {
             id="email"
             {...register('email')}
             className={errors.email ? 'error' : 'success'}
-            onFocus={() => setEmailFocused(true)}
-            onBlur={() => setEmailFocused(false)}
             autoComplete="off"
           />
           <label htmlFor="email">Mail:</label>
@@ -91,8 +84,6 @@ const RegistrationForm = (props: Props) => {
             id="password"
             {...register('password')}
             className={errors.password ? 'error' : 'success'}
-            onFocus={() => setPasswordFocused(true)}
-            onBlur={() => setPasswordFocused(false)}
             autoComplete="off"
           />
           <label htmlFor="password">Password:</label>

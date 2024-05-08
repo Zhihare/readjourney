@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { stack as Menu } from 'react-burger-menu';
 import { Navigation } from '../Header/Header.styled';
 import { BurgerMenuConteiner, ButtonLogout } from './BurgerMenu.styled';
@@ -12,8 +12,7 @@ interface BurgerMenuProps {
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onMenuToggle }) => {
-    const dispatch: AppDispatch = useDispatch();
-    const [isActive, setIsActive] = useState(false);    
+    const dispatch: AppDispatch = useDispatch(); 
     const onSubmit = async () => {
   try {
     await dispatch(logOut()); 
