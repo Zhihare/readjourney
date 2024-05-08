@@ -15,6 +15,12 @@ import { AppDispatch } from './redax/store';
 import { useDispatch } from 'react-redux';
 import { PrivateRoute } from './PrivatRouter';
 
+// const HomePage = lazy(() => import('./Pages/HomePage'));
+// const LoginPage = lazy(() => import('./Pages/LoginPage'));
+// const RegisterPage = lazy(() => import('./Pages/RegistrationPage'));
+// const MyLibraryPage = lazy(() => import('./Pages/MyLibraryPage'));
+// const MyTrainingPage = lazy(() => import('./Pages/MyTrainingPage'));
+
 function App() {
   const { isLoggedIn, isRefreshing } = useAuth();
   const dispatch: AppDispatch = useDispatch();

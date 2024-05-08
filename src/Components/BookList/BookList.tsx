@@ -38,13 +38,13 @@ const isMobile = useMediaQuery({
 
     return (
       <BLContainer>
-           {books[0].map(({ author, imageUrl, title, _id }:{author: string, imageUrl: string, title: string, _id: string}) => (
+          {books?.[0]?.map(({ author, imageUrl, title, _id }:{author:string, imageUrl: string, title: string, _id: string}) => (
             <li key={_id}>
-            <img src={imageUrl} alt={title} />
-            <h4>{title.length > 15 ? title.slice(0, 15) + "..." : title}</h4>
-            <p>{author}</p>
+                <img src={imageUrl} alt={title} />
+                <h4>{title.length > 15 ? title.slice(0, 15) + "..." : title}</h4>
+                <p>{author}</p>
             </li>
-  ))}     
+))}
     </BLContainer>
   )
 }
