@@ -7,7 +7,7 @@ interface RestrictedRouteProps {
   redirectTo?: string;
 }
 
-export const RestrictedRoute: React.FC<RestrictedRouteProps> = ({ component: Component, redirectTo = '/' }) => {
+export const RestrictedRoute: React.FC<RestrictedRouteProps> = ({ component: Component, redirectTo = '/recommended' }) => {
   const { isLoggedIn} = useAuth();
   
   return isLoggedIn ? <Navigate to={redirectTo}/> : <Component />;

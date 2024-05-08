@@ -31,6 +31,7 @@ function App() {
 
   return (
     <Routes>
+       <Route path="/" element={<Navigate to="/recommended" replace />} />
       <Route path="/login" element={isLoggedIn ? <Navigate to="/recommended" replace /> : <LoginPage />} />
       <Route path="/register" element={isLoggedIn? <Navigate to="/recommended" replace/>: <RegisterPage />} />
       <Route path="/recommended" element={<PrivateRoute component={HomePage} />} />
