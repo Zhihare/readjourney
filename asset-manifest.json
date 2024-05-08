@@ -1,22 +1,26 @@
 {
   "files": {
-    "main.css": "/readjourney/static/css/main.251f5756.css",
-    "main.js": "/readjourney/static/js/main.11c80cbe.js",
+    "main.css": "/readjourney/static/css/main.fe06badf.css",
+    "main.js": "/readjourney/static/js/main.1938e41b.js",
     "static/js/453.0d21101a.chunk.js": "/readjourney/static/js/453.0d21101a.chunk.js",
+    "static/media/iPhone15Black2x500.png": "/readjourney/static/media/iPhone15Black2x500.174139551edfbe4eeb2b.png",
+    "static/media/iPhone15Black12x300.png": "/readjourney/static/media/iPhone15Black12x300.3c2c4a1f78051281cacd.png",
+    "static/media/iPhone15Black1x500.png": "/readjourney/static/media/iPhone15Black1x500.8ea43d8d26c02aa9ac1c.png",
+    "static/media/iPhone15Black1300.png": "/readjourney/static/media/iPhone15Black1300.4d26b1e69a925d5e057c.png",
     "static/media/Gilroy-Medium.eot": "/readjourney/static/media/Gilroy-Medium.b84941b7bdcce7cbba6d.eot",
     "static/media/Gilroy-Medium.ttf": "/readjourney/static/media/Gilroy-Medium.f9f832b0ed3f1ab138c9.ttf",
     "static/media/Gilroy-Bold.eot": "/readjourney/static/media/Gilroy-Bold.a732fed1bc6140852a0b.eot",
     "static/media/Gilroy-Bold.ttf": "/readjourney/static/media/Gilroy-Bold.b900325e44ec0c673e88.ttf",
     "static/media/Gilroy-Medium.woff": "/readjourney/static/media/Gilroy-Medium.2bc7f5d7ea77ee1bddb3.woff",
     "static/media/Gilroy-Bold.woff": "/readjourney/static/media/Gilroy-Bold.5fb38b9fa452b5814397.woff",
-    "static/media/logo.svg": "/readjourney/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/symbol-defs.svg": "/readjourney/static/media/symbol-defs.8b12bf37fa63d75b549ecd63c8a5192c.svg",
     "index.html": "/readjourney/index.html",
-    "main.251f5756.css.map": "/readjourney/static/css/main.251f5756.css.map",
-    "main.11c80cbe.js.map": "/readjourney/static/js/main.11c80cbe.js.map",
+    "main.fe06badf.css.map": "/readjourney/static/css/main.fe06badf.css.map",
+    "main.1938e41b.js.map": "/readjourney/static/js/main.1938e41b.js.map",
     "453.0d21101a.chunk.js.map": "/readjourney/static/js/453.0d21101a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.251f5756.css",
-    "static/js/main.11c80cbe.js"
+    "static/css/main.fe06badf.css",
+    "static/js/main.1938e41b.js"
   ]
 }
