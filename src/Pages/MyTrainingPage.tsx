@@ -3,16 +3,18 @@ import Layout from '../Components/Loyout/Layout'
 import { PageContainer } from './HomePage.styled'
 import LeftSideBar from '../Components/LeftSideBar/LeftSideBar'
 import Dashbord from '../Components/Dashbord/Dashbord'
+import { useParams } from 'react-router-dom'
 
 type Props = {}
 
 const MyTrainingPage = (props: Props) => {
+  const { bookId } = useParams<{ bookId: string }>();
   return (
       <div>
           <Layout/>
           <PageContainer>
         <LeftSideBar>
-          filter
+          {bookId}
           </LeftSideBar>
         <Dashbord>
           riding

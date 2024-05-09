@@ -4,7 +4,7 @@ import { ButtonLogout } from '../BurgerMenu/BurgerMenu.styled';
 import { MdOutlineClose } from "react-icons/md";
 import { AppDispatch } from '../../redax/store';
 import { useDispatch } from 'react-redux';
-import { addRecommendedBook } from '../../redax/Books/booksThanks';
+import { addRecommendedBook, getOwnBooks} from '../../redax/Books/booksThanks';
 
 
 
@@ -24,12 +24,9 @@ const Modal: React.FC<ModalProps> = ({ showModal, closeModal, photo, author, tit
     const dispatch: AppDispatch = useDispatch();
 
     const onClick = (bookId: string) => {
-        dispatch(addRecommendedBook(bookId));
-        console.log('Book added')
-       
+      dispatch(addRecommendedBook(bookId));
+      dispatch(getOwnBooks({}));
     }
-
-
 
 
      if (!showModal) {

@@ -38,13 +38,13 @@ export const Navigator = ({ toggleMenu }: NavigatorProps) => {
 			  ].join(" ")}  to="/library">
         My Library
           </NavLink>
-
+{/* 
         <NavLink  onClick={handleButtonClick} className={({isActive}) =>
 			  [
 				isActive ? "active" : "",
 			  ].join(" ")}  to="/reading">
         My training
-          </NavLink>
+          </NavLink> */}
           </>
       )
         }
