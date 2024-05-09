@@ -20,10 +20,10 @@ background: var(--CL5);
 @media(min-width: 768px){
     padding: 32px;
     margin-top: 16px;
-    height: 100%;
 }
 
 @media(min-width: 1400px){
+    min-height: 651px;
    &.leftSide{
     width: 30%;
    }

@@ -9,15 +9,18 @@ export const BLContainer = styled.ul`
 width: 100%;
 display: grid;
 grid-template-columns: 1fr 1fr;
+grid-template-rows: min-content;
 gap: 27px 20px;
 
 @media(min-width: 700px){
     max-width: 100%;
+    height: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 @media(min-width: 1400px){
-    max-width: 100%;
+    max-width: 100%; 
+    height: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
@@ -30,6 +33,7 @@ li{
         border-radius: 8px;
     }
         width: 135px;
+        height: 248px;
 
     h4{
         font-size: 14px;

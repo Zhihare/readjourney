@@ -1,12 +1,13 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getRecommendBooks } from './booksThanks';
+import { getOwnBooks, getRecommendBooks } from './booksThanks';
 
 
 
 
 
 export interface BooksState {
-    books: any[];
+	books: any[];
+	myBooks: any[];
   	isLoading: boolean;
   	error: string | null;
 	loadpage: number;
@@ -17,7 +18,8 @@ export interface BooksState {
 
 
 const initialState: BooksState = {
-    books: [],
+	books: [],
+	myBooks: [],
 	isLoading: false,
 	error: null,
 	loadpage: 1,
@@ -36,6 +38,10 @@ const booksSlice = createSlice({
 		setBooks(state, action) {
 			state.books = action.payload;
 		},
+
+		setMyBooks(state, action) {
+            state.myBooks = action.payload;
+        },
 
 		
 		setLoadpage(state, action) {
@@ -67,28 +73,27 @@ const booksSlice = createSlice({
 				state.isLoading = false;
 				state.error = null;
 				state.books = [];
-				state.books.push(action.payload.results);
+				state.books = action.payload.results;
 				state.maxPage = action.payload.totalPages;
-				// state.loadpage = action.payload.page;
 			})
-			// .addCase(getFilterTeachers.fulfilled, (state, action: any) => {
-			// 	state.isLoading = false;
-			// 	state.error = null;
-			// 	state.filter = state.filter.concat(action.payload[0]);
-			// 	state.maxPage = action.payload[1];
-			// })
+
+			.addCase(getOwnBooks.fulfilled, (state, action: any) => {
+				state.isLoading = false;
+				state.error = null;
+				state.myBooks = action.payload;
+			})
 
 			.addMatcher(
 				isAnyOf(
 					getRecommendBooks.pending,
-					// getFilterTeachers.pending,
+					getOwnBooks.pending,
 				), state => {
 					state.isLoading = false;
 				})
 			.addMatcher(
 				isAnyOf(
 					getRecommendBooks.rejected,
-					// getFilterTeachers.rejected,
+					getOwnBooks.pending,
 				), (state: any, action) => {
 					state.isLoading = false;
 					state.error = action.payload;
@@ -98,4 +103,4 @@ const booksSlice = createSlice({
 
 
 export const booksReducer = booksSlice.reducer;
-export const { setIsLoading, setModal, setModalData, setLoadpage, setBooks } = booksSlice.actions;
+export const { setIsLoading, setModal, setModalData, setLoadpage, setBooks, setMyBooks } = booksSlice.actions;

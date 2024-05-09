@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {BLContainer } from './Booklist.styled'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '../../redax/store'
@@ -6,6 +6,8 @@ import { getRecommendBooks } from '../../redax/Books/booksThanks'
 import { selectBooks } from '../../redax/Books/booksSelector'
 import { useMediaQuery } from 'react-responsive';
 import { setLoadpage } from '../../redax/Books/booksSlice'
+import Modal from '../Modal/modal'
+import BookItem from './BookItem'
 type Props = {}
 
 
@@ -14,6 +16,19 @@ const BookList = (props: Props) => {
 
     const dispatch: AppDispatch = useDispatch();
     const books = useSelector(selectBooks);
+    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+
+
+      const handleOpenModal = (itemId: string) => {
+        setSelectedItemId(itemId);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const handleCloseModal = () => {
+        setSelectedItemId(null);
+        document.body.style.overflow = 'unset';
+    };
+
 
 const isMobile = useMediaQuery({
     query: '(max-width: 700px)'
@@ -37,15 +52,14 @@ const isMobile = useMediaQuery({
   }, [dispatch, isMobile, isTablet]);
 
     return (
-      <BLContainer>
-          {books?.[0]?.map(({ author, imageUrl, title, _id }:{author:string, imageUrl: string, title: string, _id: string}) => (
-            <li key={_id}>
-                <img src={imageUrl} alt={title} />
-                <h4>{title.length > 15 ? title.slice(0, 15) + "..." : title}</h4>
-                <p>{author}</p>
-            </li>
-))}
-    </BLContainer>
+        <BLContainer>
+            {books?.map(({ author, imageUrl, title, _id, totalPages }: { author: string, imageUrl: string, title: string, _id: string, totalPages: number }) => (
+                <li key={_id} onClick={() => handleOpenModal(_id)}>
+                    <BookItem imageUrl={imageUrl} title={title} author={author} />
+                    <Modal showModal={selectedItemId === _id} closeModal={handleCloseModal} photo={imageUrl} title={title} author={author} id={_id} page={totalPages} />
+                </li>
+            ))}
+        </BLContainer>
   )
 }
 

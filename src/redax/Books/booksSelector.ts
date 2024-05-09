@@ -2,7 +2,7 @@ import { RootState } from '../store';
 
 
 export const selectBooks = (state: RootState) => state.books.books;
-// export const selectFavorites = (state: RootState) => state.teachers.favorites;
+export const selectMyLibrary = (state: RootState) => state.books.myBooks;
 
 // export const selectFilter = (state: RootState) => state.teachers.filter;
 
