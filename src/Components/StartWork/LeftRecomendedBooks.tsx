@@ -4,10 +4,9 @@ import { NavLink } from 'react-router-dom'
 import { FaArrowRight } from "react-icons/fa6";
 import { BLContainer } from '../BookList/Booklist.styled';
 import { selectBooks } from '../../redax/Books/booksSelector';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import BookItem from '../BookList/BookItem';
 import Modal from '../Modal/modal';
-import { AppDispatch } from '../../redax/store';
 
 type Props = {}
 
@@ -16,7 +15,7 @@ const LeftSideRecommended = (props: Props) => {
     const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
     const [randomBooks, setRandomBooks] = useState<any[]>([]);
     const [randomBooksLoaded, setRandomBooksLoaded] = useState(false);
-    const dispatch: AppDispatch = useDispatch();
+   
 
       const handleOpenModal = (itemId: string) => {
         setSelectedItemId(itemId);
