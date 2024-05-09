@@ -4,7 +4,7 @@ import { ButtonLogout } from '../BurgerMenu/BurgerMenu.styled';
 import { MdOutlineClose } from "react-icons/md";
 import { AppDispatch } from '../../redax/store';
 import { useDispatch } from 'react-redux';
-import { addRecommendedBook, getOwnBooks } from '../../redax/Books/booksThanks';
+import { addRecommendedBook } from '../../redax/Books/booksThanks';
 
 
 
@@ -43,7 +43,10 @@ const Modal: React.FC<ModalProps> = ({ showModal, closeModal, photo, author, tit
               <h2 className='bookTrial'>{title}</h2>
               <p className='bookTrialDesc'>{author}</p>
               <p className='booksPage'>{page}</p>
-              <ButtonLogout onClick={()=> onClick(id)}>Add to library</ButtonLogout>
+          <ButtonLogout onClick={() => {
+                onClick(id); 
+                closeModal();
+          }}>Add to library</ButtonLogout>
 
     </StyledPopup>
   );

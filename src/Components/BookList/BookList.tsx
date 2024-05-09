@@ -55,7 +55,7 @@ const isMobile = useMediaQuery({
         <BLContainer>
             {books?.map(({ author, imageUrl, title, _id, totalPages }: { author: string, imageUrl: string, title: string, _id: string, totalPages: number }) => (
                 <li key={_id} onClick={() => handleOpenModal(_id)}>
-                    <BookItem imageUrl={imageUrl} title={title} author={author} />
+                    <BookItem imageUrl={imageUrl} title={title} author={author} st='' />
                     <Modal showModal={selectedItemId === _id} closeModal={handleCloseModal} photo={imageUrl} title={title} author={author} id={_id} page={totalPages} />
                 </li>
             ))}

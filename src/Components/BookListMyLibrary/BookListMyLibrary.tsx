@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '../../redax/store'
-import { getOwnBooks, getRecommendBooks } from '../../redax/Books/booksThanks'
-import { selectBooks, selectMyLibrary } from '../../redax/Books/booksSelector'
-import { useMediaQuery } from 'react-responsive';
-import { setLoadpage, setMyBooks } from '../../redax/Books/booksSlice'
-import Modal from '../Modal/modal'
+import { deleteBook, getOwnBooks } from '../../redax/Books/booksThanks'
+import { selectMyLibrary } from '../../redax/Books/booksSelector'
 import { BLContainer } from '../BookList/Booklist.styled'
 import BookItem from '../BookList/BookItem'
 import { Nothings } from './BookListMyLibrary.styled'
+import { RiDeleteBin5Line } from "react-icons/ri";
+import img from '../../img/bookSmall.png'
 type Props = {}
 
 
@@ -17,18 +16,22 @@ const BookListMyLibrary = (props: Props) => {
 
     const dispatch: AppDispatch = useDispatch();
     const library = useSelector(selectMyLibrary);
-    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
 
 
-    const handleOpenModal = (itemId: string) => {
-        setSelectedItemId(itemId);
+    const handleOpenModal = () => {
         document.body.style.overflow = 'hidden';
     };
 
-    const handleCloseModal = () => {
-        setSelectedItemId(null);
-        document.body.style.overflow = 'unset';
-    };
+    const handleDeleteBook = (id: string) => {
+        dispatch(deleteBook(id))
+            .then(() => {
+                dispatch(getOwnBooks({}));
+            })
+            .catch((error) => {
+                console.error('Error deleting book:', error);
+            });
+    }
+
 
 
     
@@ -41,9 +44,15 @@ const BookListMyLibrary = (props: Props) => {
         {library.length !== 0 ? (
                 <BLContainer>
                     {library?.map(({ author, imageUrl, title, _id, totalPages }: { author: string, imageUrl: string, title: string, _id: string, totalPages: number }) => (
-                        <li key={_id} onClick={() => handleOpenModal(_id)}>
-                            <BookItem imageUrl={imageUrl} title={title} author={author} />
-                            <Modal showModal={selectedItemId === _id} closeModal={handleCloseModal} photo={imageUrl} title={title} author={author} id={_id} page={totalPages} />
+                        <li key={_id} onClick={() => handleOpenModal()}>
+                            <BookItem imageUrl={imageUrl ? imageUrl : img} title={title} author={author} st='myBook'/>
+                            <button className='delete'
+                                onClick={(event) => {
+                                    event.stopPropagation();
+                                    handleDeleteBook(_id);
+                                }}
+                            
+                            ><RiDeleteBin5Line /></button>
                         </li>
                     ))}
                 </BLContainer>

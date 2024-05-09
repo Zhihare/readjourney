@@ -141,6 +141,17 @@ export const ButtonLogout = styled.button`
 
     }
 
+    &:disabled{
+      background-color: var(--CL4);
+      color: var(--CL1);
+      cursor: not-allowed;
+    }
+
+     &:disabled:hover{
+      background-color: var(--CL4);
+      color: var(--CL1);
+    }
+
     @media(max-width: 768px){
       &&.desktop{
         display: none;

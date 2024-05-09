@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
-import { selectMyLibrary } from '../../redax/Books/booksSelector';
-import { setMyBooks } from '../../redax/Books/booksSlice';
 import { getOwnBooks } from '../../redax/Books/booksThanks';
 import { AppDispatch } from '../../redax/store'
+import { SelectContainer } from './Select.styled';
+
 
 interface SelectorProps {}
 
 const SelectorComponent: React.FC<SelectorProps> = () => {
   const dispatch: AppDispatch = useDispatch();
-  const options = ['unread', 'in-progress', 'done', 'All books'];
+  const options = ['Unread', 'In progress', 'Done', 'All books'];
   const [selectedOption, setSelectedOption] = useState<string>('All books');
-
+  const [selectedOptionstatus, setSelectedOptionstatus] = useState<string>('All books');
 useEffect(() => {
     if (selectedOption !== 'All books') {
         dispatch(getOwnBooks({status: selectedOption})); 
@@ -23,19 +23,26 @@ useEffect(() => {
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
-    setSelectedOption(selectedValue);
-  };
+    setSelectedOptionstatus(selectedValue);
+   const transformedValue =
+    selectedValue === 'Unread' ? 'unread' :
+    selectedValue === 'In progress' ? 'in-progress' :
+    selectedValue === 'Done' ? 'done' :
+    selectedValue;
+  
+  setSelectedOption(transformedValue);
+};
 
   return (
-    <SelectContaine>
-      <select onChange={handleOptionChange} value={selectedOption}>
+    <SelectContainer>
+      <select onChange={handleOptionChange} value={selectedOptionstatus}>
         {options.map((option, index) => (
           <option key={index} value={option}>
             {option}
           </option>
         ))}
       </select>
-    </SelectContaine>
+    </SelectContainer>
   );
 };
 

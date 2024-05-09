@@ -26,6 +26,7 @@ gap: 27px 20px;
 
 li{
     cursor: pointer;
+    position: relative;
     img{
         width: 100%;
         height: 208px;
@@ -47,6 +48,27 @@ li{
         font-size: 10px;
         font-weight: 500;
         line-height: 12px;
+    }
+
+    button.delete{
+        position: absolute;
+        right: 4px;
+        bottom: 0;
+        width: 28px;
+        height: 28px;
+
+        border: 1px solid rgba(232, 80, 80, 0.2);
+        border-radius: 50%;
+        background: rgba(232, 80, 80, 0.1);
+        color: var(--CL9);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+            background: rgba(232, 80, 80, 0.2);
+        }
     }
 }
 `

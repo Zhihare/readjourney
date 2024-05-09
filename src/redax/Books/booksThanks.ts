@@ -39,6 +39,19 @@ export const getOwnBooks = createAsyncThunk(
   }
 );
 
+export const addBook = createAsyncThunk(
+	"books/addBook",
+	async (newBook: { title: string; author: string; totalPages: number | null }, thunkAPI) => {
+		try {
+			const response = await axios.post(`/books/add/`,newBook);
+			return response.data;
+		} catch (e:any) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+)
+
+
 export const addRecommendedBook = createAsyncThunk(
 	"books/addRecommended",
 	async (bookId:string, thunkAPI) => {
@@ -63,6 +76,18 @@ export const getRecommendB = createAsyncThunk(
 		}
 	}
 );
+
+export const deleteBook = createAsyncThunk(
+	"books/deleteBook",
+	async (bookId:string, thunkAPI) => {
+		try {
+			const response = await axios.delete(`/books/remove/${bookId}`);
+			return response.data;
+		} catch (e:any) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+)
 
 export const deleteContact = createAsyncThunk(
 	"contacts/deleteContact",

@@ -17,7 +17,9 @@ export const StyledPopup = styled(Popup)`
     border-radius: 12px;
     background: var(--CL5);
 
-
+&.good-content{
+  width: 345px;
+}
 
     button.close {
       position: absolute;
@@ -34,7 +36,12 @@ export const StyledPopup = styled(Popup)`
     }
     }
 
-    
+    div{
+      width: 70px;
+      height: 70px;
+      background: black;
+      margin: 0 auto 32px auto;
+    }
     
 
     button.close:hover {
@@ -57,12 +64,22 @@ export const StyledPopup = styled(Popup)`
       margin-bottom: 2px;
     }
 
+    h2.good{
+      margin-bottom: 14px;
+    }
+
     p.bookTrialDesc {
       color: var(--CL2);
       font-size: 12px;
       font-weight: 500;
       line-height: 14px;
       margin-bottom: 4px;
+    }
+
+    p.bookTrialDesc.good{
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18px;
     }
 
     p.booksPage {
@@ -72,9 +89,14 @@ export const StyledPopup = styled(Popup)`
       line-height: 12px;
     }
 
+    span{
+      color: var(--CL1);
+    }
+
     button{
         margin: 20px auto 0 auto;
     }
+
 
     
        @media(min-width: 768px){
@@ -90,6 +112,8 @@ export const StyledPopup = styled(Popup)`
       font-size: 14px;
       line-height: 20px;
     }
+
+   
 
     }
 

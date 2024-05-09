@@ -6,6 +6,37 @@ export const StartWorkContainer = styled.div`
     max-width: 313px;
    background: var(--CL4);
 
+   &.recommended{
+    min-width: 295px;
+    max-width: 313px;
+    height: fit-content;
+
+    ul{
+     display: flex;
+     flex-direction: row;
+     height: fit-content;
+    }
+
+    li{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 2px;
+        height: 141px;
+    }
+
+    img{
+        width: 71px;
+        height: 107px;
+    }
+
+    h4{
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    }
+   }
+
 
    h2{
     color: var(--CL1);

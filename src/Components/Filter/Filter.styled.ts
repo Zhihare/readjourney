@@ -32,8 +32,16 @@ input{
         padding-left: 65px;
     }
 
+     &#authorMyLibrary{
+        padding-left: 90px;
+    }
+
     &#bookTitle{
         padding-left: 85px;
+    }
+
+    &#page{
+        padding-left: 90px;
     }
 
 
