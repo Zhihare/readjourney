@@ -64,12 +64,12 @@ export const addRecommendedBook = createAsyncThunk(
 	}
 )
 
-export const getRecommendB = createAsyncThunk(
-	"books/get",
-	async (contactId:any, thunkAPI) => {
-		try {
-			const response = await axios.post("/contacts", { ...contactId });
 
+export const getBookInform = createAsyncThunk(
+	"books/getbook",
+	async (bookId:string|undefined, thunkAPI) => {
+		try {
+			const response = await axios.get(`/books/${bookId}`);
 			return response.data;
 		} catch (e:any) {
 			return thunkAPI.rejectWithValue(e.message);
@@ -88,6 +88,34 @@ export const deleteBook = createAsyncThunk(
 		}
 	}
 )
+
+export const startReading = createAsyncThunk(
+	"books/start",
+	async (newBook: { id?: string; page: number }, thunkAPI) => {
+		try {
+			const response = await axios.post(`/books/reading/start`,newBook);
+			return response.data;
+		} catch (e:any) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+)
+
+
+export const stopReading = createAsyncThunk(
+	"books/stop",
+	async (newBook: { id?: string; page: number }, thunkAPI) => {
+		try {
+			const response = await axios.post(`/books/reading/finish`,newBook);
+			return response.data;
+		} catch (e:any) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+)
+
+
+
 
 export const deleteContact = createAsyncThunk(
 	"contacts/deleteContact",

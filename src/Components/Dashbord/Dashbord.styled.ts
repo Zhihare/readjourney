@@ -4,6 +4,7 @@ export const DashbordContainer = styled.div`
 display: flex;
 flex-wrap: wrap;
 justify-content: space-around;
+align-content: flex-start;
 gap: 32px;
 
 width: 100%;

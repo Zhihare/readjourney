@@ -24,8 +24,10 @@ const Modal: React.FC<ModalProps> = ({ showModal, closeModal, photo, author, tit
     const dispatch: AppDispatch = useDispatch();
 
     const onClick = (bookId: string) => {
-      dispatch(addRecommendedBook(bookId));
-      dispatch(getOwnBooks({}));
+      dispatch(addRecommendedBook(bookId))
+      .then(() => {
+                dispatch(getOwnBooks({}));
+            })
     }
 
 

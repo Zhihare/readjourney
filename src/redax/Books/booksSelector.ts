@@ -3,7 +3,7 @@ import { RootState } from '../store';
 
 export const selectBooks = (state: RootState) => state.books.books;
 export const selectMyLibrary = (state: RootState) => state.books.myBooks;
-
+export const selectBookInfo = (state: RootState) => state.books.bookInfo;
 // export const selectFilter = (state: RootState) => state.teachers.filter;
 
 // export const selectModal = (state: RootState) => state.teachers.modal;

@@ -18,6 +18,7 @@ const HomePagr = (props: Props) => {
    const handleSearch = (filter: { bookTitle: string, author: string }) => {
     console.log('Search filter:', filter);
   };
+  
   return (
     <div>
       <Layout/>

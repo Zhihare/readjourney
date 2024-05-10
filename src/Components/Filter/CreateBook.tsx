@@ -82,7 +82,7 @@ const CreateBook = (props: Props) => {
                 onChange={(event) => setPage(Number(event.target.value))}
                 />
         <label>
-        The author:
+        Total page:
         </label>
         </div>
           <ButtonLogout disabled={(page&&bookTitle&&author)?false:true} className='toApply' type="submit" >Add book</ButtonLogout>

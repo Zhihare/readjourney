@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DTContainer = styled.div`
 display: flex;
 justify-content: space-between;
-align-items: flex-start;
+align-items: center;
 width: 100%;
 
 h1{

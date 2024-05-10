@@ -3,7 +3,17 @@ import styled from "styled-components";
 export const FilterFormCont = styled.form`
 max-width: 313px;
 width: 313px;
+height: fit-content;
 
+ span#error{
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14px;
+        color: var(--CL9);
+        margin-bottom: 4px;
+        padding-left: 14px;
+    }
 
 h3{
 font-size: 14px;
@@ -43,7 +53,12 @@ input{
     &#page{
         padding-left: 90px;
     }
+     &#pageStart{
+        padding-left: 105px;
+    }
 
+
+   
 
 
 }

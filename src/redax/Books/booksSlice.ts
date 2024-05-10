@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getOwnBooks, getRecommendBooks } from './booksThanks';
+import { getBookInform, getOwnBooks, getRecommendBooks, startReading, stopReading } from './booksThanks';
 
 
 
@@ -8,6 +8,7 @@ import { getOwnBooks, getRecommendBooks } from './booksThanks';
 export interface BooksState {
 	books: any[];
 	myBooks: any[];
+	bookInfo: any;
   	isLoading: boolean;
   	error: string | null;
 	loadpage: number;
@@ -20,6 +21,8 @@ export interface BooksState {
 const initialState: BooksState = {
 	books: [],
 	myBooks: [],
+	bookInfo: [],
+  
 	isLoading: false,
 	error: null,
 	loadpage: 1,
@@ -83,17 +86,43 @@ const booksSlice = createSlice({
 				state.myBooks = action.payload;
 			})
 
+			.addCase(getBookInform.fulfilled, (state, action: any) => {
+				state.isLoading = false;
+				state.error = null;
+				state.bookInfo = action.payload;
+			})
+
+
+			.addCase(startReading.fulfilled, (state, action: any) => {
+				state.isLoading = false;
+				state.error = null;
+				state.bookInfo = action.payload;
+			})
+
+				.addCase(stopReading.fulfilled, (state, action: any) => {
+				state.isLoading = false;
+				state.error = null;
+				state.bookInfo = action.payload;
+			})
+
+
 			.addMatcher(
 				isAnyOf(
 					getRecommendBooks.pending,
 					getOwnBooks.pending,
+					getBookInform.pending,
+					startReading.pending,
+                    stopReading.pending,
 				), state => {
 					state.isLoading = false;
 				})
 			.addMatcher(
 				isAnyOf(
 					getRecommendBooks.rejected,
-					getOwnBooks.pending,
+					getOwnBooks.rejected,
+					getBookInform.rejected,
+					startReading.rejected,
+                    stopReading.rejected,
 				), (state: any, action) => {
 					state.isLoading = false;
 					state.error = action.payload;

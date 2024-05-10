@@ -35,10 +35,6 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onMenuToggle }) => {
             <NavLink    to="/library">
                 My Library
             </NavLink>
-
-            <NavLink    to="/reading">
-                My training
-              </NavLink>
               
             <ButtonLogout className='burger' onClick={onSubmit}>Log out</ButtonLogout>
         </Menu>
