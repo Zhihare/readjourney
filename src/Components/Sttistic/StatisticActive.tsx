@@ -1,83 +1,43 @@
-import React from 'react'
-import { LeftContainer, RightContainer, SAC, SAList, SATitle } from './StatisticAction.styled'
+import React, { useState } from 'react';
 import icons from '../../img/symbol-defs.svg';
 import { FaRegHourglass } from "react-icons/fa6";
-import { RiDeleteBin5Line } from "react-icons/ri";
-type Props = {}
+import { useSelector } from 'react-redux';
+import { selectBookInfo } from '../../redax/Books/booksSelector';
+import Loader from '../Loader/Loader';
+import StatisticProgressList from './StatisticProgressList';
+import StatisticDiagram from './StatisticDiagram';
+import { SATitle } from './StatisticAction.styled';
 
-const StatisticAction = (props: Props) => {
+const StatisticAction = () => {
+  const { progress } = useSelector(selectBookInfo);
+  const [activeComponent, setActiveComponent] = useState('progress'); // Состояние для отслеживания текущего выбранного компонента
+
+  const handleButtonClick = (component: string) => {
+    setActiveComponent(component);
+  };
+
+  if (!progress) {
+    return <Loader />;
+  }
+
   return (
-      <>
-          <SATitle>
-              <h2>Progress</h2>
-              <div>
-                  <button>
-                     <FaRegHourglass />
-                  </button>
-                  <button>
-                       <svg width={20} height={20}>
-                                <use href={icons + '#icon-pie-chart-02'}></use>
-                      </svg>
-                  </button>
-              </div>
-          </SATitle>
-          <SAC>
-              <SAList>
-                  <li> 
-                      <LeftContainer>
-                          <h5>21.10.2023</h5>
-                          <p>7.6%</p>
-                          <span>29 minutes</span>
-                          <div></div>
-                      </LeftContainer>
-                      <RightContainer>
-                          <p className='pages'>42 pages</p>
-                          <div>
-                              <img src={require('../../img/block.png')} alt="graphick" />
-                              <button><RiDeleteBin5Line /></button>
-                          </div>
-                              <span>45 pages per hour</span>
-                          
-                      </RightContainer>
-                  </li>
-                  <li> 
-                      <LeftContainer>
-                          <h5>21.10.2023</h5>
-                          <p>7.6%</p>
-                          <span>29 minutes</span>
-                          <div></div>
-                      </LeftContainer>
-                      <RightContainer>
-                          <p className='pages'>42 pages</p>
-                          <div>
-                              <img src={require('../../img/block.png')} alt="graphick" />
-                              <button><RiDeleteBin5Line /></button>
-                          </div>
-                              <span>45 pages per hour</span>
-                          
-                      </RightContainer>
-                  </li>
-                   <li> 
-                      <LeftContainer>
-                          <h5>21.10.2023</h5>
-                          <p>7.6%</p>
-                          <span>29 minutes</span>
-                          <div></div>
-                      </LeftContainer>
-                      <RightContainer>
-                          <p className='pages'>42 pages</p>
-                          <div>
-                              <img src={require('../../img/block.png')} alt="graphick" />
-                              <button><RiDeleteBin5Line /></button>
-                          </div>
-                              <span>45 pages per hour</span>
-                          
-                      </RightContainer>
-                  </li>
-             </SAList>
-          </SAC>
-          </>
-  )
-}
+    <>
+      <SATitle>
+        <h2>Diary</h2>
+        <div>
+          <button className={activeComponent === 'progress' ? 'active' : ''} onClick={() => handleButtonClick('progress')}>
+            <FaRegHourglass />
+          </button>
+          <button className={activeComponent === 'diagram' ? 'active' : ''} onClick={() => handleButtonClick('diagram')}>
+            <svg width={20} height={20}>
+              <use href={icons + '#icon-pie-chart-02'}></use>
+            </svg>
+          </button>
+        </div>
+      </SATitle>
+      {activeComponent === 'progress' ? <StatisticProgressList /> : <StatisticDiagram />}
+    </>
+  );
+};
 
-export default StatisticAction
+export default StatisticAction;

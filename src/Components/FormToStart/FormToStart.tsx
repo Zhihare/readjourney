@@ -15,10 +15,16 @@ type Props = {};
 const FormToStart = (props: Props) => {
     const dispatch: AppDispatch = useDispatch();
     const { bookId } = useParams<{ bookId: string }>();
-    const [page, setPage] = useState<number>(0);
+    const [page, setPage] = useState<number|''>('');
     const [showModal, setModal] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const { totalPages, progress } = useSelector(selectBookInfo);
+    
+   
+    const lastPage = progress && progress.filter((item: any) => item.status !== 'active');
+    const lastReading = lastPage && lastPage.length > 0 && lastPage[lastPage.length - 1]; 
+    const finishPages = lastReading ? lastReading.finishPage : 1;
+
     
 
     const isActive = progress && progress.some((item: any) => item.status === 'active');
@@ -27,7 +33,7 @@ const FormToStart = (props: Props) => {
 
     const validationSchema = Yup.object().shape({
         page: Yup.number()
-        .min(1, 'Page number must be greater than 0')
+        .min(finishPages, `Page number must be greater than ${finishPages}` )
         .max(totalPages, 'Page number exceeds maximum allowed value')
         .required('Page number is required'),
     });
@@ -37,7 +43,7 @@ const FormToStart = (props: Props) => {
         try {
             await validationSchema.validate({ page }, { abortEarly: false });
             await dispatch(startReading({ id: bookId, page }));
-            setPage(0);
+            setPage('');
             handleOpenModal();
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
@@ -54,7 +60,7 @@ const FormToStart = (props: Props) => {
         try {
             await validationSchema.validate({ page }, { abortEarly: false });
             await dispatch(stopReading({ id: bookId, page }));
-            setPage(0);
+            setPage('');
             handleOpenModal();
         } catch (err) {
             if (err instanceof Yup.ValidationError) {

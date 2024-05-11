@@ -7,9 +7,9 @@ export const LoaderStyled = styled.div`
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  position: absolute;
-  top: 15%;
-  left: 50%;
+  margin-top: 40px;
+  /* top: 15%;
+  left: 50%; */
   transform: translate(50%, 50%);
   text-indent: -9999em;
   -webkit-animation: load4 1.3s infinite linear;
