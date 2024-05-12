@@ -4,11 +4,11 @@ import { FilterFormCont } from './../Filter/Filter.styled';
 import { startReading, stopReading } from '../../redax/Books/booksThanks';
 import { AppDispatch } from '../../redax/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import ModalAddBook from '../Modal/modalAddBook';
 import * as Yup from 'yup';
 import { selectBookInfo } from '../../redax/Books/booksSelector';
-import { isAnyOf } from '@reduxjs/toolkit';
+
 
 type Props = {};
 

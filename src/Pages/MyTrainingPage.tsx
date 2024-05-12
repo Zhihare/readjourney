@@ -7,8 +7,7 @@ import { useParams } from 'react-router-dom'
 import DashBoardTitle from '../Components/DashBoardTitle/DashBoardTitle'
 import { getBookInform } from '../redax/Books/booksThanks'
 import { AppDispatch } from '../redax/store'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectBookInfo } from '../redax/Books/booksSelector'
+import { useDispatch} from 'react-redux'
 import BookInfo from '../Components/BookInfo/BookInfo'
 import FormToStart from '../Components/FormToStart/FormToStart'
 import Time from '../Components/TitleComponent/Time'
@@ -22,7 +21,7 @@ const MyTrainingPage = (props: Props) => {
   
   useEffect(() => {
     dispatch(getBookInform(bookId)); 
-  }, [dispatch]);
+  }, [dispatch, bookId]);
 
   return (
       <div>

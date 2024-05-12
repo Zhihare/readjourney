@@ -35,12 +35,13 @@ overflow-y: auto;
 
 @media(min-width: 1400px){
     width: 313px;
-    height: 281px;
+    height: 282px;
 }
 
 `
 
 export const SDiagram = styled.div`
+position: relative;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -49,45 +50,22 @@ border-radius: 50%;
 width: 116px;
 height: 116px;
 
-div{
-    
-    
-&.pie {
-display: flex;
-align-items: center;
-justify-content: center;
-color: var(--CL1);
-  width: 100%;
-  height: 100%;
-  position: relative;
-  border-radius: 50%;
+div.centerInfo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   position: absolute;
+   border-radius: 50%;
+   background: var(--CL4);
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   height: 80%;
+   width: 80%;
 }
 
-&.pie:after {
-  border-radius: 50%;
-  display: block;
-  content: "";
-  background: var(--CL4);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 85%;
-  width: 85%;
-}
 
-&.p1 {
-  background-image: linear-gradient(-30deg, var(--CL5) 50%, transparent 50%),
-                    linear-gradient(90deg, var(--CL5) 50%, var(--CL8) 50%);
-}
-
-span{
-    z-index: 10;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 20px;
-}
-}
 
 @media(min-width: 768px){
     width: 138px;
