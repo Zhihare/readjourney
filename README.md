@@ -25,4 +25,4 @@ The website is designed to track reading progress and provide users with the abi
 
 ## GitHub Repository
 
-Explore the project on [GitHub](zhihare.github.io/readjourney/)
+Explore the project on [GitHub](https://zhihare.github.io/readjourney)
