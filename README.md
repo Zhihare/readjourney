@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# Read Journey
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The website is designed to track reading progress and provide users with the ability to organize their own library.
 
-## Available Scripts
+### The main features of the website include:
 
-In the project directory, you can run:
+1. **User Registration:** Users can register on the website by creating their account.
 
-### `npm start`
+2. **Adding Books to Library:** After registration, users can add books to their library. Books can be selected from the provided catalog or added manually.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3.**Removing Books from Library:** Users have the ability to remove books from their library.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4.**Reading Books:** Users can open a book from their library and start reading from a selected page. There is a start/stop feature that allows users to control the reading process.
 
-### `npm test`
+5.**Reading Statistics:** The website provides users with statistics and tracking of reading progress for each book.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technological stack:
 
-### `npm run build`
+- **React:** Framework for developing the user interface.
+- **Redux:** For managing the application state.
+- **React Router:** For navigation between website pages.
+- **Styled Components:** For styling React components.
+- **Axios:** For handling HTTP requests to the server.
+- **Docker:** For containerizing the backend part of the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## GitHub Repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Explore the project on [GitHub](zhihare.github.io/readjourney/)
