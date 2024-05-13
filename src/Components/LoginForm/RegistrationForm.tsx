@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 import { LoginFormContainer, LoginFormForm, LoginFormTitle, Logo } from './LoginForm.styled';
@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { registration } from '../../redax/Auth/authThanks';
 import { AppDispatch } from '../../redax/store';
 import { NavLink } from 'react-router-dom';
+import { selectLoginError } from '../../redax/Auth/authSelector';
 
 type Props = {};
 
@@ -17,6 +18,7 @@ const RegistrationForm = (props: Props) => {
  
 
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const errorUser = useSelector(selectLoginError);
   const [inputChanged, setInputChanged] = useState<{ [key: string]: boolean }>({
       name: false,
       email: false,
@@ -116,7 +118,7 @@ const RegistrationForm = (props: Props) => {
                   <use href={icons + '#icon-eye-off'}></use>
                 )}
               </svg> :
-              <svg id="eye" className={errors.password ? "error" : "ok"} width="16" height="12" onClick={togglePasswordVisibility}>
+              <svg id="eye" className={errors.password ? "error" : "ok"} width="16" height="12">
                 {errors.password ? (
                   <use href={icons + '#icon-pajamas_error'}></use>
                 ) : (
@@ -126,8 +128,11 @@ const RegistrationForm = (props: Props) => {
             }
         </div>
 
-        {errors.password ? <span id="error">{errors.password.message}</span> :
-            <span id="ok">Password is secure</span>}
+        {!errorUser?
+             errors.password ? <span id="error">{errors.password.message}</span> :
+              <span id="ok">Password is secure</span>:
+          <span id="error">a user with this email is already registered</span>
+           }
           </div>
 
         <div id="button" className='reg'>
