@@ -14,7 +14,21 @@ import { NavLink } from 'react-router-dom';
 type Props = {};
 
 const RegistrationForm = (props: Props) => {
+ 
+
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [inputChanged, setInputChanged] = useState<{ [key: string]: boolean }>({
+      name: false,
+      email: false,
+      password: false,
+  });
+  
+    const handleInputChange = (fieldName: string) => {
+    setInputChanged(prevState => ({
+      ...prevState,
+      [fieldName]: true,
+    }));
+  };
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -33,12 +47,13 @@ const RegistrationForm = (props: Props) => {
   });
 
 
+  
     const onSubmit = async (data: { name: string; email: string; password: string }) => {
   try {
     await dispatch(registration(data)); 
 
-  } catch (error) {
-    console.error('There was an error!', error);
+  } catch (error: any) {
+    console.log('There was an error!', error);
   }
 };
 
@@ -60,8 +75,9 @@ const RegistrationForm = (props: Props) => {
             type="text"
             id="name"
             {...register('name')}
-            className={errors.name ? 'error' : 'success'}
+            className={inputChanged.name ? (errors.name ? 'error' : 'success') : ''}
             autoComplete="off"
+            onChange={() => handleInputChange('name')}
           />
           <label htmlFor="name">Name:</label>
         </div>
@@ -72,8 +88,9 @@ const RegistrationForm = (props: Props) => {
             type="text"
             id="email"
             {...register('email')}
-            className={errors.email ? 'error' : 'success'}
+            className={inputChanged.email ? (errors.email ? 'error' : 'success') : ''}
             autoComplete="off"
+            onChange={() => handleInputChange('email')}
           />
           <label htmlFor="email">Mail:</label>
         </div>
@@ -85,17 +102,28 @@ const RegistrationForm = (props: Props) => {
             type={passwordVisible ? 'text' : 'password'}
             id="password"
             {...register('password')}
-            className={errors.password ? 'error' : 'success'}
+              className={inputChanged.password ? (errors.password ? 'error' : 'success') : ''}
             autoComplete="off"
-          />
-          <label htmlFor="password">Password:</label>
-          <svg id="eye" className={errors.password ? "error" : "ok"} width="16" height="12" onClick={togglePasswordVisibility}>
-            {errors.password ? (
-              <use href={icons + '#icon-pajamas_error'}></use>
-            ) : (
-              <use href={icons + '#icon-gg_check-o'}></use>
-            )}
-          </svg>
+            onChange={() => handleInputChange('password')}
+            />
+            
+            <label htmlFor="password">Password:</label>
+            {!inputChanged.password ?
+              <svg id="eye" width="18" height="13" onClick={togglePasswordVisibility}>
+                {passwordVisible ? (
+                  <use href={icons + '#icon-eye'}></use>
+                ) : (
+                  <use href={icons + '#icon-eye-off'}></use>
+                )}
+              </svg> :
+              <svg id="eye" className={errors.password ? "error" : "ok"} width="16" height="12" onClick={togglePasswordVisibility}>
+                {errors.password ? (
+                  <use href={icons + '#icon-pajamas_error'}></use>
+                ) : (
+                  <use href={icons + '#icon-gg_check-o'}></use>
+                )}
+              </svg>
+            }
         </div>
 
         {errors.password ? <span id="error">{errors.password.message}</span> :

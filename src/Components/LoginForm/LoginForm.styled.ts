@@ -150,6 +150,8 @@ label{
 }
 
 svg#eye{
+    width: 18px;
+    height: 13px;
     position: absolute;
     top: 50%;
     right: 14px;

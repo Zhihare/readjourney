@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 import { selectBookInfo } from '../../redax/Books/booksSelector';
 
 
+
 type Props = {};
 
 const FormToStart = (props: Props) => {
@@ -18,7 +19,7 @@ const FormToStart = (props: Props) => {
     const [page, setPage] = useState<number|''>('');
     const [showModal, setModal] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const { totalPages, progress } = useSelector(selectBookInfo);
+    const { totalPages, progress }:{totalPages: number, progress:any} = useSelector(selectBookInfo);
     
    
     const lastPage = progress && progress.filter((item: any) => item.status !== 'active');
@@ -34,7 +35,7 @@ const FormToStart = (props: Props) => {
     const validationSchema = Yup.object().shape({
         page: Yup.number()
         .min(finishPages, `Page number must be greater than ${finishPages}` )
-        .max(totalPages, 'Page number exceeds maximum allowed value')
+        .max(totalPages, `Page number exceeds maximum allowed value ${totalPages}`)
         .required('Page number is required'),
     });
 
@@ -44,7 +45,9 @@ const FormToStart = (props: Props) => {
             await validationSchema.validate({ page }, { abortEarly: false });
             await dispatch(startReading({ id: bookId, page }));
             setPage('');
-            handleOpenModal();
+            if (typeof page === 'number' && page === totalPages) {
+                handleOpenModal();
+            }
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
                 setError(err.message);
@@ -61,7 +64,9 @@ const FormToStart = (props: Props) => {
             await validationSchema.validate({ page }, { abortEarly: false });
             await dispatch(stopReading({ id: bookId, page }));
             setPage('');
-            handleOpenModal();
+            if (typeof page === 'number' && page === totalPages) {
+                handleOpenModal();
+            }
         } catch (err) {
             if (err instanceof Yup.ValidationError) {
                 setError(err.message);
@@ -107,7 +112,7 @@ const FormToStart = (props: Props) => {
                     <ButtonLogout className="toApply" type="submit">
                         To start
                     </ButtonLogout>
-                    <ModalAddBook showModal={showModal} closeModal={handleCloseModal} />
+                    <ModalAddBook showModal={showModal} closeModal={handleCloseModal} modal={2} />
                 </FilterFormCont> :
                 
                 <FilterFormCont onSubmit={handleSubmitstop}>
@@ -133,7 +138,7 @@ const FormToStart = (props: Props) => {
                     <ButtonLogout className="toApply" type="submit">
                         To stop
                     </ButtonLogout>
-                    <ModalAddBook showModal={showModal} closeModal={handleCloseModal} />
+                     <ModalAddBook showModal={showModal} closeModal={handleCloseModal} modal={2} />
                 </FilterFormCont>}
                 </>
     );

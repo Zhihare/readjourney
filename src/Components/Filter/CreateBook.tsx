@@ -86,7 +86,7 @@ const CreateBook = (props: Props) => {
         </label>
         </div>
           <ButtonLogout disabled={(page&&bookTitle&&author)?false:true} className='toApply' type="submit" >Add book</ButtonLogout>
-          <ModalAddBook showModal={showModal} closeModal={handleCloseModal} />
+          <ModalAddBook showModal={showModal} closeModal={handleCloseModal} modal={1} />
     </FilterFormCont>
   );
 };

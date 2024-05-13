@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 import { LoginFormContainer, LoginFormForm, LoginFormTitle, Logo } from './LoginForm.styled';
@@ -10,11 +10,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { logIn } from '../../redax/Auth/authThanks';
 import { AppDispatch } from '../../redax/store';
 import { NavLink } from 'react-router-dom';
+import {selectLoginError } from '../../redax/Auth/authSelector';
 
 type Props = {};
 
 const LoginForm = (props: Props) => {
+  const errorUser = useSelector(selectLoginError);
+  
+
   const [passwordVisible, setPasswordVisible] = useState(false);
+  
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -35,7 +40,6 @@ const LoginForm = (props: Props) => {
   const onSubmit = async (data: { email: string; password: string }) => {
   try {
     await dispatch(logIn(data)); 
-
   } catch (error) {
     console.error('There was an error!', error);
   }
@@ -59,33 +63,34 @@ const LoginForm = (props: Props) => {
             type="text"
             id="email"
             {...register('email')}
-            className={errors.email ? 'error' : 'success'}
+            className={errors.email ? 'error' : ''}
             autoComplete="off"
           />
           <label htmlFor="email">Mail:</label>
         </div>
         {errors.email && <span id='error'>{errors.email.message}</span>}
+      
         <div>
           <div className='passContainer'>
           <input
             type={passwordVisible ? 'text' : 'password'}
             id="password"
             {...register('password')}
-            className={errors.password ? 'error' : 'success'}
+            className={errors.password ? 'error' : ''}
             autoComplete="off"
           />
           <label htmlFor="password">Password:</label>
-          <svg id="eye" className={errors.password ? "error" : "ok"} width="16" height="12" onClick={togglePasswordVisibility}>
-            {errors.password ? (
-              <use href={icons + '#icon-pajamas_error'}></use>
+          <svg id="eye"  width="18" height="13" onClick={togglePasswordVisibility}>
+            {passwordVisible ? (
+              <use href={icons + '#icon-eye'}></use>
             ) : (
-              <use href={icons + '#icon-gg_check-o'}></use>
+              <use href={icons + '#icon-eye-off'}></use>
             )}
           </svg>
         </div>
 
-        {errors.password ? <span id="error">{errors.password.message}</span> :
-            <span id="ok">Password is secure</span>}
+          {errorUser? <span id="error">incorrect email or password</span> :
+            null}
           </div>
 
         <div id="button">

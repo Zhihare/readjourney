@@ -47,22 +47,22 @@ for (const date in groupedByDateWithTotalPages) {
   return (
     <SAC>
               <SAList>
-                  {Object.entries(groupedByDateWithTotalPages).map(([date, data]: [string, any]) => {
+        {Object.entries(groupedByDateWithTotalPages).map(([date, data]: [string, any]) => {
 
-                 const isActive = data.readings.some((item: any) => item.status === "active");
+          const isActive = data.readings.some((item: any) => item.status === "active");
      
-                      if (isActive && data.readings.length === 1) { 
-                          return (
-                              <ReadingStart>
-                              <p>You started reading...</p>
-                                  <Loader />
-                                <Rectangle/>
-                          </ReadingStart>);
-                      }
+          if (isActive && data.readings.length === 1) {
+            return (
+              <ReadingStart>
+                <p>You started reading...</p>
+                <Loader />
+                <Rectangle />
+              </ReadingStart>);
+          }
 
 
           return (
-            <li key={date}>
+            <li key = {`${date}-${totalPages}`}>
                 <div className={isActive ? 'title active' : 'title'}>
                 <h5>{date}</h5>
                 <p className='pages'>{data.pages+1} pages</p>

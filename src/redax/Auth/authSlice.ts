@@ -9,7 +9,9 @@ export interface UserState {
     user: { name: string, email: string },
 	token: null,
 	isLoggedIn: boolean,
-	isRefreshing: boolean,
+    isRefreshing: boolean,
+    error: string;
+    
 }
 
 
@@ -18,6 +20,7 @@ const initialState: UserState = {
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    error: "",
 };
 
 const userSlice = createSlice({
@@ -44,10 +47,11 @@ const userSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(logIn.fulfilled, (state, action: any) => {
-                 state.user.name = action.payload.name;
+                state.user.name = action.payload.name;
                 state.user.email = action.payload.email;
                 state.token = action.payload.token;
                 state.isLoggedIn = true;
+                state.error = '';
             })
             
             .addCase(registration.fulfilled, (state, action: any) => {
@@ -55,39 +59,55 @@ const userSlice = createSlice({
                 state.user.email = action.payload.email;
                 state.token = action.payload.token;
                 state.isLoggedIn = true;
+                state.error = '';
             })
 
             .addCase(logOut.fulfilled, (state, action: any) => {
                 state.user = { name: "", email: "" };
-			    state.token = null;
-			    state.isLoggedIn = false;
+                state.token = null;
+                state.isLoggedIn = false;
+                state.error = '';
             })
 
-            .addCase(refreshUser.fulfilled, (state, action:any) => {
-			state.user.name = action.payload.name;
-            state.user.email = action.payload.email;
-            state.token = action.payload.token;
-			state.isLoggedIn = true;
-			state.isRefreshing = false;
-		    })
-
-
-			.addMatcher(
-				isAnyOf(
-					refreshUser.pending,
-				), state => {
-					state.isRefreshing = true;
+            .addCase(refreshUser.fulfilled, (state, action: any) => {
+                state.user.name = action.payload.name;
+                state.user.email = action.payload.email;
+                state.token = action.payload.token;
+                state.isLoggedIn = true;
+                state.isRefreshing = false;
+                state.error = '';
             })
+
+
+            .addMatcher(
+                isAnyOf(
+                    refreshUser.pending,
+                ), state => {
+                    state.isRefreshing = true;
+                })
             
-			.addMatcher(
-				isAnyOf(
-					logIn.rejected,
-                    registration.rejected,
-                    refreshUser.rejected,
-				), (state:any, action) => {
+            .addMatcher(
+                isAnyOf(
+                    logIn.rejected,
+                ), (state: any, action) => {
                     state.error = action.payload;
                     state.isRefreshing = false;
-				});
+            })
+        
+         .addMatcher(
+                isAnyOf(
+                    registration.rejected,
+                ), (state: any, action) => {
+                    state.error = action.payload;
+                    state.isRefreshing = false;
+         })
+        
+         .addMatcher(
+                isAnyOf(
+                    refreshUser.rejected,
+                ), (state: any, action) => {
+                    state.isRefreshing = false;
+				})
 	},
 });
 

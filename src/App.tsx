@@ -1,4 +1,4 @@
-import { useEffect, startTransition } from 'react';
+import { useEffect, startTransition, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 
@@ -14,6 +14,7 @@ import { refreshUser } from './redax/Auth/authThanks';
 import { AppDispatch } from './redax/store';
 import { useDispatch } from 'react-redux';
 import { PrivateRoute } from './PrivatRouter';
+import { ToastContainer } from 'react-toastify';
 
 // const HomePage = lazy(() => import('./Pages/HomePage'));
 // const LoginPage = lazy(() => import('./Pages/LoginPage'));
@@ -36,6 +37,8 @@ function App() {
   }
 
   return (
+    <>
+    <Suspense fallback={<Loader />}>
     <Routes>
        <Route path="/" element={<Navigate to="/recommended" replace />} />
       <Route path="/login" element={isLoggedIn ? <Navigate to="/recommended" replace /> : <LoginPage />} />
@@ -43,7 +46,20 @@ function App() {
       <Route path="/recommended" element={<PrivateRoute component={HomePage} />} />
       <Route path="/library" element={<PrivateRoute component={MyLibraryPage} />} />
       <Route path="/reading/:bookId" element={<PrivateRoute component={MyTrainingPage} />} />
-    </Routes>
+      </Routes>
+      </Suspense>
+        <ToastContainer
+      position="top-left"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"/>
+    </>
   );
 }
 
