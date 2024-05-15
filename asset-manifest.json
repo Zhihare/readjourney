@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/readjourney/static/css/main.fe06badf.css",
-    "main.js": "/readjourney/static/js/main.dfc160a3.js",
+    "main.js": "/readjourney/static/js/main.707cbe16.js",
     "static/js/453.a06741cc.chunk.js": "/readjourney/static/js/453.a06741cc.chunk.js",
     "static/media/iPhone15Black2x500.png": "/readjourney/static/media/iPhone15Black2x500.174139551edfbe4eeb2b.png",
     "static/media/iPhone15Black12x300.png": "/readjourney/static/media/iPhone15Black12x300.3c2c4a1f78051281cacd.png",
@@ -16,11 +16,11 @@
     "static/media/symbol-defs.svg": "/readjourney/static/media/symbol-defs.67e057f89476b58d29d6119a3e7b79bc.svg",
     "index.html": "/readjourney/index.html",
     "main.fe06badf.css.map": "/readjourney/static/css/main.fe06badf.css.map",
-    "main.dfc160a3.js.map": "/readjourney/static/js/main.dfc160a3.js.map",
+    "main.707cbe16.js.map": "/readjourney/static/js/main.707cbe16.js.map",
     "453.a06741cc.chunk.js.map": "/readjourney/static/js/453.a06741cc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fe06badf.css",
-    "static/js/main.dfc160a3.js"
+    "static/js/main.707cbe16.js"
   ]
 }
