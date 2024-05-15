@@ -8,7 +8,7 @@ import BookItem from '../BookList/BookItem'
 import { Nothings } from './BookListMyLibrary.styled'
 import { RiDeleteBin5Line } from "react-icons/ri";
 import img from '../../img/bookSmall.png'
-import { NavLink } from 'react-router-dom'; // Импорт NavLink
+import { NavLink } from 'react-router-dom';
 
 type Props = {}
 
@@ -17,6 +17,7 @@ const BookListMyLibrary = (props: Props) => {
     const library = useSelector(selectMyLibrary);
 
     const handleDeleteBook = (id: string) => {
+             
         dispatch(deleteBook(id))
             .then(() => {
                 dispatch(getOwnBooks({}));
@@ -52,8 +53,7 @@ const BookListMyLibrary = (props: Props) => {
             </BLContainer>
         ) : (
             <Nothings>
-                <div className='round'>
-                    <div className='rectangle'></div>
+                <div className='round'>📚
                 </div>
                 <p>To start training, add 
                     <span> some of your books </span>

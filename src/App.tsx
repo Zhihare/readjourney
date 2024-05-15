@@ -46,9 +46,8 @@ function App() {
       <Route path="/recommended" element={<PrivateRoute component={HomePage} />} />
       <Route path="/library" element={<PrivateRoute component={MyLibraryPage} />} />
       <Route path="/reading/:bookId" element={<PrivateRoute component={MyTrainingPage} />} />
-      </Routes>
-      </Suspense>
-        <ToastContainer
+        </Routes>
+          <ToastContainer
       position="top-left"
       autoClose={5000}
       hideProgressBar={false}
@@ -59,6 +58,8 @@ function App() {
       draggable
       pauseOnHover
       theme="light"/>
+      </Suspense>
+      
     </>
   );
 }

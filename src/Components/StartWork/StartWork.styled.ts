@@ -92,7 +92,12 @@ export const StartWorkContainer = styled.div`
 
     min-width: 40px;
     min-height: 40px;
-    background: #000000;
+
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 40px;
+    background: black;
+
    }
 
    p{

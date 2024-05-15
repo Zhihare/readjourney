@@ -9,7 +9,7 @@ const StatisticNone = (props: Props) => {
           <p>Here you will see when and how much you read.
               To record, click on the red button above.</p>
           <div className='round'>
-              <div className='rectangle'></div>
+            🌟
           </div>
     </div>
   )

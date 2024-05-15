@@ -18,6 +18,11 @@ div.round{
     height: 100px;
     border-radius: 50%;
     background-color: var(--CL4);
+
+
+font-size: 70px;
+font-weight: 500;
+line-height: 70px;
 }
 
 div.rectangle{

@@ -24,8 +24,8 @@ const ModalAddBook: React.FC<ModalProps> = ({closeModal, showModal, modal }) => 
         <StyledPopup className='good' open={true} onClose={closeModal} closeOnDocumentClick>
      
           <button className="close" onClick={closeModal}><MdOutlineClose /></button>
-          <div />
-          <h2 className='bookTrial good'>Good jop</h2>
+          <div>👍</div>
+          <h2 className='bookTrial good'>Good job</h2>
           <p className='bookTrialDesc good'>Your book is now in
             <span> the library! </span>
             The joy knows no bounds and
@@ -35,7 +35,7 @@ const ModalAddBook: React.FC<ModalProps> = ({closeModal, showModal, modal }) => 
         <StyledPopup className='good' open={true} onClose={closeModal} closeOnDocumentClick>
      
           <button className="close" onClick={closeModal}><MdOutlineClose /></button>
-          <div />
+          <div>📚</div>
           <h2 className='bookTrial good'>The book is read</h2>
           <p className='bookTrialDesc good'>It was an
             <span> exciting journey</span>

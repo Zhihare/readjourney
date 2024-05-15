@@ -8,7 +8,7 @@ const Quete = (props: Props) => {
      <StartWorkContainer className='queteCont'>
           <ul className='queteList'>
               <li className='quete'>
-                  <span className='ractangle'></span>
+                  <span className='ractangle'>📚</span>
                   <p>
                       "Books are <span>windows </span>
                       to the world, and reading is a journey

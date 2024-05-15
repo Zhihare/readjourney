@@ -28,13 +28,12 @@ div.round{
     border-radius: 50%;
     background: var(--CL4);
     margin: 20px auto 0 auto;
+
+     font-size: 50px;
+    font-weight: 500;
+    line-height: 70px;
 }
 
-div.rectangle{
-    width: 32px;
-    height: 32px;
-    background: #000000;
-}
 
 @media(min-width: 768px){
     width: 305px;

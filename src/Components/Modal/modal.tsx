@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { addRecommendedBook, getOwnBooks} from '../../redax/Books/booksThanks';
 
 
-
 interface ModalProps {
   showModal: boolean;
   closeModal: () => void;
@@ -23,8 +22,9 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ showModal, closeModal, photo, author, title, id, page }) => {
     const dispatch: AppDispatch = useDispatch();
 
-    const onClick = (bookId: string) => {
+  const onClick = (bookId: string) => {
       dispatch(addRecommendedBook(bookId))
+        
       .then(() => {
                 dispatch(getOwnBooks({}));
             })
@@ -46,7 +46,6 @@ const Modal: React.FC<ModalProps> = ({ showModal, closeModal, photo, author, tit
                 onClick(id); 
                 closeModal();
           }}>Add to library</ButtonLogout>
-
     </StyledPopup>
   );
 };

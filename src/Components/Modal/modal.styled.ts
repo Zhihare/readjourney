@@ -37,10 +37,16 @@ export const StyledPopup = styled(Popup)`
     }
 
     div{
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 70px;
       height: 70px;
-      background: black;
       margin: 0 auto 32px auto;
+      font-size: 68px;
+      font-weight: 500;
+      line-height: 70px;
+      
     }
     
 
